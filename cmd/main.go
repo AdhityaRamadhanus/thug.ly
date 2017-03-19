@@ -21,7 +21,7 @@ func cmdNotFound(c *cli.Context, command string) {
 
 func main() {
 	app := cli.NewApp()
-	app.Name = "mongoes"
+	app.Name = "thugly"
 	app.Author = "Adhitya Ramadhanus"
 	app.Email = "adhitya.ramadhanus@gmail.com"
 
