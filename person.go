@@ -6,11 +6,13 @@ import (
 	"github.com/lazywei/go-opencv/opencv"
 )
 
+// Person is a struct which consist of Face and Eyes detected from Detector.DetectPersons
 type Person struct {
 	Face opencv.Rect
 	Eyes []opencv.Rect
 }
 
+// GetEyesRect calculate a persons eyes rectangle,
 func (p *Person) GetEyesRect() image.Rectangle {
 	eyesRegion := p.getDefaultEyesRect()
 	leftEyes := []opencv.Rect{}

@@ -57,7 +57,11 @@ func Thuglify(cliContext *cli.Context) {
 	if err != nil {
 		fatalErr(errors.Wrap(err, "Cannot open output image"))
 	}
-	if err := jpeg.Encode(outputImage, canvas, &jpeg.Options{jpeg.DefaultQuality}); err != nil {
+	if err := jpeg.Encode(outputImage,
+		canvas,
+		&jpeg.Options{
+			Quality: jpeg.DefaultQuality,
+		}); err != nil {
 		fatalErr(errors.Wrap(err, "Cannot encode jpeg output"))
 	}
 

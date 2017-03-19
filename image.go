@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// LoadImage is a helper to load image file and returning image.Image and error
 func LoadImage(file string) (image.Image, error) {
 	reader, err := os.Open(file)
 	if err != nil {
