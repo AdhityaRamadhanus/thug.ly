@@ -41,13 +41,11 @@ func Thuglify(cliContext *cli.Context) {
 	if err != nil {
 		fatalErr(errors.Wrap(err, "Failed to load the glsses image"))
 	}
-	// textImage, err := thugly.LoadImage(TextPath)
-	// if err != nil {
-	// 	fatalErr(errors.Wrap(err, "Failed to load the text image"))
-	// }
+
 	bounds := baseImage.Bounds()
 	canvas := image.NewRGBA(bounds)
 	draw.Draw(canvas, bounds, baseImage, bounds.Min, draw.Over)
+	// Determine whether to write a text or not
 	if len(persons) > 0 && len(cliContext.String("text")) > 0 {
 		textReg := image.Rect(
 			bounds.Dx()/2-bounds.Dx()/4,

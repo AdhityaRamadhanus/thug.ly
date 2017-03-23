@@ -32,22 +32,22 @@ func DrawLabel(img *image.RGBA, label string, font string, rect image.Rectangle)
 	if err != nil {
 		return err
 	}
-	f, err := freetype.ParseFont(fontBytes)
+	fontType, err := freetype.ParseFont(fontBytes)
 	if err != nil {
 		return err
 	}
 
-	// Initialize the context.
-	fg := image.Black
+	fontColor := image.Black
 	c := freetype.NewContext()
 	c.SetDPI(dpi)
-	c.SetFont(f)
+	c.SetFont(fontType)
 	c.SetFontSize(fontsize)
 	c.SetClip(img.Bounds())
 	c.SetDst(img)
-	c.SetSrc(fg)
-	pt := freetype.Pt(rect.Min.X, rect.Min.Y)
-	_, err = c.DrawString(label, pt)
+	c.SetSrc(fontColor)
+
+	fontPoint := freetype.Pt(rect.Min.X, rect.Min.Y)
+	_, err = c.DrawString(label, fontPoint)
 	return err
 }
 
