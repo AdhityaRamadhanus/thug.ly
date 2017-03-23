@@ -55,7 +55,7 @@ func Thuglify(cliContext *cli.Context) {
 			bounds.Dx()/2+bounds.Dx()/4,
 			bounds.Dy(),
 		)
-		if err := thugly.DrawLabel(canvas, "Deal With It", TextPath, textReg); err != nil {
+		if err := thugly.DrawLabel(canvas, cliContext.String("text"), TextPath, textReg); err != nil {
 			log.Println(err)
 		}
 	}
