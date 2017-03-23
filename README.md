@@ -25,12 +25,12 @@ Installation
 Usage
 ------------
 ```
-thugly --input <image path> --output=<output path, default to thuglify.jpg>
+thugly --input <image path> --output=<output path, default to thuglify.jpg> --text <text to add at the bottom of image, like "Deal with it">
 ```
 
 ```
 NAME:
-   thuglify - Thuglify your photos
+   thugly - Thuglify your photos
 
 USAGE:
    thuglify [global options] command [command options] [arguments...]
@@ -46,6 +46,7 @@ COMMANDS:
 
 GLOBAL OPTIONS:
    --input value   Image input path
+   --text value    Text to add at the bottom
    --output value  Image output path (default: "thuglify.jpg")
    --help, -h      show help
    --version, -v   print the version
@@ -55,10 +56,10 @@ GLOBAL OPTIONS:
 Results
 ------------
 ![adit-thuglify](https://cloud.githubusercontent.com/assets/5761975/24078484/837626f8-0ca1-11e7-9d53-5a0a0fe7cfdb.jpg)
-![hitler-thuglify](https://cloud.githubusercontent.com/assets/5761975/24078485/837793f8-0ca1-11e7-9927-4456eb5d56ac.jpg)
 ![lena-thuglify](https://cloud.githubusercontent.com/assets/5761975/24078486/837e0b70-0ca1-11e7-8f39-b46301ff264d.jpg)
-![lenin-thuglify](https://cloud.githubusercontent.com/assets/5761975/24078487/837ed488-0ca1-11e7-9fc8-0f376099d7fa.jpg)
-![obama-thuglify](https://cloud.githubusercontent.com/assets/5761975/24078488/838004f2-0ca1-11e7-9bf8-4b5187f80b53.jpg)
+![hitler-thuglify](https://cloud.githubusercontent.com/assets/5761975/24257399/5e4fa230-101d-11e7-8fd3-20f4dab509fd.jpg)
+![lenin-thuglify](https://cloud.githubusercontent.com/assets/5761975/24257400/5e8c8ad8-101d-11e7-9d31-2db30e8dcd92.jpg)
+![obama-thuglify](https://cloud.githubusercontent.com/assets/5761975/24257401/5e92d2c6-101d-11e7-9eea-ff681665258b.jpg)
 
 License
 ----
