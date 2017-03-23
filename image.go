@@ -3,7 +3,10 @@ package thugly
 import (
 	"image"
 	"image/color"
+	"io/ioutil"
 	"os"
+
+	"github.com/golang/freetype"
 )
 
 // LoadImage is a helper to load image file and returning image.Image and error
@@ -17,6 +20,35 @@ func LoadImage(file string) (image.Image, error) {
 		return nil, err
 	}
 	return img, nil
+}
+
+func DrawLabel(img *image.RGBA, label string, font string, rect image.Rectangle) error {
+	// fixed for now
+	dpi := 72.0
+	// Calculate fontsize
+	fontsize := float64(rect.Dx()/len(label)) * 2.52
+	// Read the font data.
+	fontBytes, err := ioutil.ReadFile(font)
+	if err != nil {
+		return err
+	}
+	f, err := freetype.ParseFont(fontBytes)
+	if err != nil {
+		return err
+	}
+
+	// Initialize the context.
+	fg := image.Black
+	c := freetype.NewContext()
+	c.SetDPI(dpi)
+	c.SetFont(f)
+	c.SetFontSize(fontsize)
+	c.SetClip(img.Bounds())
+	c.SetDst(img)
+	c.SetSrc(fg)
+	pt := freetype.Pt(rect.Min.X, rect.Min.Y)
+	_, err = c.DrawString(label, pt)
+	return err
 }
 
 // For Debugging purpose, you mostly won't need this

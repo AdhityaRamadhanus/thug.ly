@@ -18,6 +18,7 @@ var (
 	FaceCascadePath = "cascades/haarcascade_frontalface_alt.xml"
 	EyeCascadePath  = "cascades/haarcascade_eye.xml"
 	GlassesPath     = "assets/glasses.png"
+	TextPath        = "assets/impact-regular.ttf"
 )
 
 func fatalErr(err error) {
@@ -40,9 +41,24 @@ func Thuglify(cliContext *cli.Context) {
 	if err != nil {
 		fatalErr(errors.Wrap(err, "Failed to load the glsses image"))
 	}
+	// textImage, err := thugly.LoadImage(TextPath)
+	// if err != nil {
+	// 	fatalErr(errors.Wrap(err, "Failed to load the text image"))
+	// }
 	bounds := baseImage.Bounds()
 	canvas := image.NewRGBA(bounds)
 	draw.Draw(canvas, bounds, baseImage, bounds.Min, draw.Over)
+	if len(persons) > 0 && len(cliContext.String("text")) > 0 {
+		textReg := image.Rect(
+			bounds.Dx()/2-bounds.Dx()/4,
+			bounds.Dy()/2+(bounds.Dy()*45)/100,
+			bounds.Dx()/2+bounds.Dx()/4,
+			bounds.Dy(),
+		)
+		if err := thugly.DrawLabel(canvas, "Deal With It", TextPath, textReg); err != nil {
+			log.Println(err)
+		}
+	}
 	for _, person := range persons {
 		eyesReg := person.GetEyesRect()
 		fitGlassImg := imaging.Resize(glassesImage, eyesReg.Dx(), eyesReg.Dy(), imaging.Lanczos)
