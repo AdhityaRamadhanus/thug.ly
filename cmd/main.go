@@ -33,6 +33,11 @@ func main() {
 			Usage: "Image input path",
 		},
 		cli.StringFlag{
+			Name:  "text",
+			Value: "",
+			Usage: "Text to add at the bottom",
+		},
+		cli.StringFlag{
 			Name:  "output",
 			Value: "thuglify.jpg",
 			Usage: "Image output path",
